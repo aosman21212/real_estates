@@ -11,7 +11,10 @@
         - Utility charge billing per lease period
     """,
     'category': 'Real Estate',
-    'author': 'Custom',
+    'author': 'leapai.ai',
+    'website': 'https://leapai.ai/en/',
+    'support': 'abdzoro89@gmail.com',
+    'maintainer': 'a.osman@bab.com.sa',
     'depends': ['base', 'account', 'mail'],
     'images': [
         'static/description/banner.png',

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
     <record model="res.groups.privilege" id="res_groups_privilege_real_estate">
@@ -16,7 +16,7 @@
     <record id="group_real_estate_manager" model="res.groups">
         <field name="name">Manager</field>
         <field name="sequence">20</field>
-        <field name="implied_ids" eval="[(4, ref('real_estate_management.group_real_estate_user'))]"/>
+        <field name="implied_ids" eval="[(4, ref('real_estate_management_custom.group_real_estate_user'))]"/>
         <field name="privilege_id" ref="res_groups_privilege_real_estate"/>
         <field name="user_ids" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
     </record>

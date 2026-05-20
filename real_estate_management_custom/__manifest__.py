@@ -13,6 +13,10 @@
     'category': 'Real Estate',
     'author': 'Custom',
     'depends': ['base', 'account', 'mail'],
+    'images': [
+        'static/description/banner.png',
+        'static/description/thumbnail.png',
+    ],
     'data': [
         'security/real_estate_security.xml',
         'security/ir.model.access.csv',

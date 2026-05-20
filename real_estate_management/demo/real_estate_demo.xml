@@ -1,0 +1,653 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- ========================================================
+             OWNERS
+        ======================================================== -->
+        <record id="partner_owner_noor" model="res.partner">
+            <field name="name">Al Noor Properties LLC</field>
+            <field name="is_company" eval="True"/>
+            <field name="email">info@alnoorproperties.ae</field>
+            <field name="phone">+971 4 500 1000</field>
+        </record>
+
+        <record id="partner_owner_palm" model="res.partner">
+            <field name="name">Palm Residences Holdings</field>
+            <field name="is_company" eval="True"/>
+            <field name="email">info@palmresidences.ae</field>
+            <field name="phone">+971 4 500 2000</field>
+        </record>
+
+        <!-- ========================================================
+             TENANTS
+        ======================================================== -->
+        <record id="partner_tenant_ahmed" model="res.partner">
+            <field name="name">Ahmed Al Rashidi</field>
+            <field name="is_company" eval="False"/>
+            <field name="email">ahmed.rashidi@example.com</field>
+            <field name="phone">+971 50 123 4567</field>
+        </record>
+
+        <record id="partner_tenant_sarah" model="res.partner">
+            <field name="name">Sarah Johnson</field>
+            <field name="is_company" eval="False"/>
+            <field name="email">sarah.johnson@example.com</field>
+            <field name="phone">+971 55 234 5678</field>
+        </record>
+
+        <record id="partner_tenant_mohammed" model="res.partner">
+            <field name="name">Mohammed Al Farsi</field>
+            <field name="is_company" eval="False"/>
+            <field name="email">m.alfarsi@example.com</field>
+            <field name="phone">+971 52 345 6789</field>
+        </record>
+
+        <record id="partner_tenant_emma" model="res.partner">
+            <field name="name">Emma Williams</field>
+            <field name="is_company" eval="False"/>
+            <field name="email">emma.williams@example.com</field>
+            <field name="phone">+971 56 456 7890</field>
+        </record>
+
+        <record id="partner_tenant_carlos" model="res.partner">
+            <field name="name">Carlos Rodriguez</field>
+            <field name="is_company" eval="False"/>
+            <field name="email">carlos.rodriguez@example.com</field>
+            <field name="phone">+971 50 567 8901</field>
+        </record>
+
+        <record id="partner_tenant_fatima" model="res.partner">
+            <field name="name">Fatima Al Mansouri</field>
+            <field name="is_company" eval="False"/>
+            <field name="email">fatima.mansouri@example.com</field>
+            <field name="phone">+971 54 678 9012</field>
+        </record>
+
+        <record id="partner_tenant_david" model="res.partner">
+            <field name="name">David Chen</field>
+            <field name="is_company" eval="False"/>
+            <field name="email">david.chen@example.com</field>
+            <field name="phone">+971 55 789 0123</field>
+        </record>
+
+        <record id="partner_tenant_layla" model="res.partner">
+            <field name="name">Layla Hassan</field>
+            <field name="is_company" eval="False"/>
+            <field name="email">layla.hassan@example.com</field>
+            <field name="phone">+971 50 890 1234</field>
+        </record>
+
+        <!-- ========================================================
+             MAINTENANCE VENDORS
+        ======================================================== -->
+        <record id="partner_vendor_plumbing" model="res.partner">
+            <field name="name">Quick Fix Plumbing LLC</field>
+            <field name="is_company" eval="True"/>
+            <field name="email">info@quickfixplumbing.ae</field>
+            <field name="phone">+971 4 123 4567</field>
+        </record>
+
+        <record id="partner_vendor_electric" model="res.partner">
+            <field name="name">Dubai Electric Services</field>
+            <field name="is_company" eval="True"/>
+            <field name="email">service@dubaielectric.ae</field>
+            <field name="phone">+971 4 234 5678</field>
+        </record>
+
+        <record id="partner_vendor_maintenance" model="res.partner">
+            <field name="name">Al Madina Maintenance Co.</field>
+            <field name="is_company" eval="True"/>
+            <field name="email">contact@almadina.ae</field>
+            <field name="phone">+971 4 345 6789</field>
+        </record>
+
+        <!-- ========================================================
+             BUILDING 1 — AL NOOR TOWER (Dubai Marina)
+        ======================================================== -->
+        <record id="building_al_noor" model="real.estate.building">
+            <field name="name">Al Noor Tower</field>
+            <field name="street">Marina Walk, Tower 7</field>
+            <field name="city">Dubai</field>
+            <field name="zip">00000</field>
+            <field name="owner_id" ref="partner_owner_noor"/>
+            <field name="notes">Premium residential tower in Dubai Marina. 20 floors, 2 basement parking levels. Rooftop pool, gym, and 24/7 concierge.</field>
+        </record>
+
+        <!-- Units: Al Noor Tower -->
+        <record id="unit_noor_101" model="real.estate.unit">
+            <field name="name">101</field>
+            <field name="building_id" ref="building_al_noor"/>
+            <field name="floor">1</field>
+            <field name="area">65.0</field>
+            <field name="bedrooms">1</field>
+            <field name="bathrooms">1</field>
+            <field name="rent_amount">7500</field>
+            <field name="state">occupied</field>
+        </record>
+
+        <record id="unit_noor_205" model="real.estate.unit">
+            <field name="name">205</field>
+            <field name="building_id" ref="building_al_noor"/>
+            <field name="floor">2</field>
+            <field name="area">95.0</field>
+            <field name="bedrooms">2</field>
+            <field name="bathrooms">2</field>
+            <field name="rent_amount">11000</field>
+            <field name="state">occupied</field>
+        </record>
+
+        <record id="unit_noor_310" model="real.estate.unit">
+            <field name="name">310</field>
+            <field name="building_id" ref="building_al_noor"/>
+            <field name="floor">3</field>
+            <field name="area">130.0</field>
+            <field name="bedrooms">3</field>
+            <field name="bathrooms">2</field>
+            <field name="rent_amount">15000</field>
+            <field name="state">occupied</field>
+        </record>
+
+        <record id="unit_noor_415" model="real.estate.unit">
+            <field name="name">415</field>
+            <field name="building_id" ref="building_al_noor"/>
+            <field name="floor">4</field>
+            <field name="area">85.0</field>
+            <field name="bedrooms">2</field>
+            <field name="bathrooms">1</field>
+            <field name="rent_amount">10000</field>
+            <field name="state">available</field>
+        </record>
+
+        <record id="unit_noor_520" model="real.estate.unit">
+            <field name="name">520</field>
+            <field name="building_id" ref="building_al_noor"/>
+            <field name="floor">5</field>
+            <field name="area">65.0</field>
+            <field name="bedrooms">1</field>
+            <field name="bathrooms">1</field>
+            <field name="rent_amount">8000</field>
+            <field name="state">maintenance</field>
+            <field name="notes">Under refurbishment. Expected re-listing: July 2026.</field>
+        </record>
+
+        <record id="unit_noor_610" model="real.estate.unit">
+            <field name="name">610</field>
+            <field name="building_id" ref="building_al_noor"/>
+            <field name="floor">6</field>
+            <field name="area">110.0</field>
+            <field name="bedrooms">2</field>
+            <field name="bathrooms">2</field>
+            <field name="rent_amount">12500</field>
+            <field name="state">occupied</field>
+        </record>
+
+        <!-- ========================================================
+             BUILDING 2 — PALM RESIDENCES (Jumeirah Beach)
+        ======================================================== -->
+        <record id="building_palm" model="real.estate.building">
+            <field name="name">Palm Residences</field>
+            <field name="street">Jumeirah Beach Road, Block C</field>
+            <field name="city">Dubai</field>
+            <field name="zip">00000</field>
+            <field name="owner_id" ref="partner_owner_palm"/>
+            <field name="notes">Beachfront apartment complex with sea views, private beach access, and valet parking.</field>
+        </record>
+
+        <!-- Units: Palm Residences -->
+        <record id="unit_palm_a01" model="real.estate.unit">
+            <field name="name">A01</field>
+            <field name="building_id" ref="building_palm"/>
+            <field name="floor">1</field>
+            <field name="area">80.0</field>
+            <field name="bedrooms">1</field>
+            <field name="bathrooms">1</field>
+            <field name="rent_amount">9000</field>
+            <field name="state">occupied</field>
+        </record>
+
+        <record id="unit_palm_b02" model="real.estate.unit">
+            <field name="name">B02</field>
+            <field name="building_id" ref="building_palm"/>
+            <field name="floor">2</field>
+            <field name="area">120.0</field>
+            <field name="bedrooms">2</field>
+            <field name="bathrooms">2</field>
+            <field name="rent_amount">13500</field>
+            <field name="state">occupied</field>
+        </record>
+
+        <record id="unit_palm_c03" model="real.estate.unit">
+            <field name="name">C03</field>
+            <field name="building_id" ref="building_palm"/>
+            <field name="floor">3</field>
+            <field name="area">160.0</field>
+            <field name="bedrooms">3</field>
+            <field name="bathrooms">3</field>
+            <field name="rent_amount">18000</field>
+            <field name="state">available</field>
+        </record>
+
+        <record id="unit_palm_d04" model="real.estate.unit">
+            <field name="name">D04 – Penthouse</field>
+            <field name="building_id" ref="building_palm"/>
+            <field name="floor">4</field>
+            <field name="area">250.0</field>
+            <field name="bedrooms">4</field>
+            <field name="bathrooms">4</field>
+            <field name="rent_amount">28000</field>
+            <field name="state">available</field>
+            <field name="notes">Top floor penthouse with panoramic sea view. Premium finishes. Available from June 2026.</field>
+        </record>
+
+        <!-- ========================================================
+             BUILDING 3 — GREEN VALLEY VILLAS (Arabian Ranches)
+        ======================================================== -->
+        <record id="building_green_valley" model="real.estate.building">
+            <field name="name">Green Valley Villas</field>
+            <field name="street">Arabian Ranches, Phase 2</field>
+            <field name="city">Dubai</field>
+            <field name="zip">00000</field>
+            <field name="notes">Gated villa community with private gardens, shared pool, and clubhouse. Pet-friendly.</field>
+        </record>
+
+        <!-- Units: Green Valley Villas -->
+        <record id="unit_gv_villa1" model="real.estate.unit">
+            <field name="name">Villa 1</field>
+            <field name="building_id" ref="building_green_valley"/>
+            <field name="floor">1</field>
+            <field name="area">300.0</field>
+            <field name="bedrooms">4</field>
+            <field name="bathrooms">4</field>
+            <field name="rent_amount">22000</field>
+            <field name="state">occupied</field>
+        </record>
+
+        <record id="unit_gv_villa2" model="real.estate.unit">
+            <field name="name">Villa 2</field>
+            <field name="building_id" ref="building_green_valley"/>
+            <field name="floor">1</field>
+            <field name="area">280.0</field>
+            <field name="bedrooms">3</field>
+            <field name="bathrooms">3</field>
+            <field name="rent_amount">19000</field>
+            <field name="state">occupied</field>
+        </record>
+
+        <record id="unit_gv_villa3" model="real.estate.unit">
+            <field name="name">Villa 3</field>
+            <field name="building_id" ref="building_green_valley"/>
+            <field name="floor">1</field>
+            <field name="area">320.0</field>
+            <field name="bedrooms">5</field>
+            <field name="bathrooms">5</field>
+            <field name="rent_amount">25000</field>
+            <field name="state">available</field>
+            <field name="notes">Largest villa in the complex. Private pool. Available for viewing.</field>
+        </record>
+
+        <!-- ========================================================
+             ACTIVE LEASES
+        ======================================================== -->
+
+        <record id="lease_noor_101" model="real.estate.lease">
+            <field name="name">LEASE/00001</field>
+            <field name="unit_id" ref="unit_noor_101"/>
+            <field name="tenant_id" ref="partner_tenant_ahmed"/>
+            <field name="start_date">2026-01-01</field>
+            <field name="end_date">2026-12-31</field>
+            <field name="rent_amount">7500</field>
+            <field name="deposit_amount">15000</field>
+            <field name="state">active</field>
+            <field name="next_invoice_date">2026-06-01</field>
+            <field name="notes">Annual lease. Ahmed has been a tenant since 2024. Renewal expected.</field>
+        </record>
+        <!-- Wire active_lease_id so tenant shows on unit -->
+        <record id="unit_noor_101" model="real.estate.unit">
+            <field name="active_lease_id" ref="lease_noor_101"/>
+        </record>
+
+        <record id="lease_noor_205" model="real.estate.lease">
+            <field name="name">LEASE/00002</field>
+            <field name="unit_id" ref="unit_noor_205"/>
+            <field name="tenant_id" ref="partner_tenant_sarah"/>
+            <field name="start_date">2026-02-01</field>
+            <field name="end_date">2027-01-31</field>
+            <field name="rent_amount">11000</field>
+            <field name="deposit_amount">22000</field>
+            <field name="state">active</field>
+            <field name="next_invoice_date">2026-06-01</field>
+        </record>
+        <record id="unit_noor_205" model="real.estate.unit">
+            <field name="active_lease_id" ref="lease_noor_205"/>
+        </record>
+
+        <record id="lease_noor_310" model="real.estate.lease">
+            <field name="name">LEASE/00003</field>
+            <field name="unit_id" ref="unit_noor_310"/>
+            <field name="tenant_id" ref="partner_tenant_mohammed"/>
+            <field name="start_date">2026-03-01</field>
+            <field name="end_date">2027-02-28</field>
+            <field name="rent_amount">15000</field>
+            <field name="deposit_amount">30000</field>
+            <field name="state">active</field>
+            <field name="next_invoice_date">2026-06-01</field>
+        </record>
+        <record id="unit_noor_310" model="real.estate.unit">
+            <field name="active_lease_id" ref="lease_noor_310"/>
+        </record>
+
+        <record id="lease_noor_610" model="real.estate.lease">
+            <field name="name">LEASE/00004</field>
+            <field name="unit_id" ref="unit_noor_610"/>
+            <field name="tenant_id" ref="partner_tenant_emma"/>
+            <field name="start_date">2026-01-15</field>
+            <field name="end_date">2027-01-14</field>
+            <field name="rent_amount">12500</field>
+            <field name="deposit_amount">25000</field>
+            <field name="state">active</field>
+            <field name="next_invoice_date">2026-06-15</field>
+        </record>
+        <record id="unit_noor_610" model="real.estate.unit">
+            <field name="active_lease_id" ref="lease_noor_610"/>
+        </record>
+
+        <record id="lease_palm_a01" model="real.estate.lease">
+            <field name="name">LEASE/00005</field>
+            <field name="unit_id" ref="unit_palm_a01"/>
+            <field name="tenant_id" ref="partner_tenant_carlos"/>
+            <field name="start_date">2026-01-01</field>
+            <field name="end_date">2026-12-31</field>
+            <field name="rent_amount">9000</field>
+            <field name="deposit_amount">18000</field>
+            <field name="state">active</field>
+            <field name="next_invoice_date">2026-06-01</field>
+        </record>
+        <record id="unit_palm_a01" model="real.estate.unit">
+            <field name="active_lease_id" ref="lease_palm_a01"/>
+        </record>
+
+        <record id="lease_palm_b02" model="real.estate.lease">
+            <field name="name">LEASE/00006</field>
+            <field name="unit_id" ref="unit_palm_b02"/>
+            <field name="tenant_id" ref="partner_tenant_fatima"/>
+            <field name="start_date">2026-04-01</field>
+            <field name="end_date">2027-03-31</field>
+            <field name="rent_amount">13500</field>
+            <field name="deposit_amount">27000</field>
+            <field name="state">active</field>
+            <field name="next_invoice_date">2026-06-01</field>
+        </record>
+        <record id="unit_palm_b02" model="real.estate.unit">
+            <field name="active_lease_id" ref="lease_palm_b02"/>
+        </record>
+
+        <record id="lease_gv_villa1" model="real.estate.lease">
+            <field name="name">LEASE/00007</field>
+            <field name="unit_id" ref="unit_gv_villa1"/>
+            <field name="tenant_id" ref="partner_tenant_david"/>
+            <field name="start_date">2026-01-01</field>
+            <field name="end_date">2027-12-31</field>
+            <field name="rent_amount">22000</field>
+            <field name="deposit_amount">44000</field>
+            <field name="state">active</field>
+            <field name="next_invoice_date">2026-06-01</field>
+            <field name="notes">2-year lease. David's family of 4. Renewed from 2024.</field>
+        </record>
+        <record id="unit_gv_villa1" model="real.estate.unit">
+            <field name="active_lease_id" ref="lease_gv_villa1"/>
+        </record>
+
+        <record id="lease_gv_villa2" model="real.estate.lease">
+            <field name="name">LEASE/00008</field>
+            <field name="unit_id" ref="unit_gv_villa2"/>
+            <field name="tenant_id" ref="partner_tenant_layla"/>
+            <field name="start_date">2026-02-15</field>
+            <field name="end_date">2027-02-14</field>
+            <field name="rent_amount">19000</field>
+            <field name="deposit_amount">38000</field>
+            <field name="state">active</field>
+            <field name="next_invoice_date">2026-06-15</field>
+        </record>
+        <record id="unit_gv_villa2" model="real.estate.unit">
+            <field name="active_lease_id" ref="lease_gv_villa2"/>
+        </record>
+
+        <!-- ========================================================
+             DRAFT LEASE (pending start)
+        ======================================================== -->
+        <record id="lease_palm_c03_draft" model="real.estate.lease">
+            <field name="name">LEASE/00009</field>
+            <field name="unit_id" ref="unit_palm_c03"/>
+            <field name="tenant_id" ref="partner_tenant_ahmed"/>
+            <field name="start_date">2026-07-01</field>
+            <field name="end_date">2027-06-30</field>
+            <field name="rent_amount">18000</field>
+            <field name="deposit_amount">36000</field>
+            <field name="state">draft</field>
+            <field name="notes">Ahmed upgrading from Al Noor 101 at end of June. Activate on 2026-07-01.</field>
+        </record>
+
+        <!-- ========================================================
+             EXPIRED LEASE
+        ======================================================== -->
+        <record id="lease_noor_415_expired" model="real.estate.lease">
+            <field name="name">LEASE/00010</field>
+            <field name="unit_id" ref="unit_noor_415"/>
+            <field name="tenant_id" ref="partner_tenant_sarah"/>
+            <field name="start_date">2025-01-01</field>
+            <field name="end_date">2025-12-31</field>
+            <field name="rent_amount">9500</field>
+            <field name="deposit_amount">19000</field>
+            <field name="state">expired</field>
+            <field name="notes">Sarah moved to Al Noor 205. Unit 415 is now available for re-letting.</field>
+        </record>
+
+        <!-- ========================================================
+             UTILITY CHARGES — Pending (next invoice)
+        ======================================================== -->
+        <record id="util_noor_101_elec_may" model="real.estate.utility.line">
+            <field name="lease_id" ref="lease_noor_101"/>
+            <field name="name">Electricity – May 2026</field>
+            <field name="charge_type">electricity</field>
+            <field name="amount">320</field>
+            <field name="date">2026-05-31</field>
+            <field name="state">pending</field>
+        </record>
+
+        <record id="util_noor_101_water_may" model="real.estate.utility.line">
+            <field name="lease_id" ref="lease_noor_101"/>
+            <field name="name">Water – May 2026</field>
+            <field name="charge_type">water</field>
+            <field name="amount">85</field>
+            <field name="date">2026-05-31</field>
+            <field name="state">pending</field>
+        </record>
+
+        <record id="util_noor_205_elec_may" model="real.estate.utility.line">
+            <field name="lease_id" ref="lease_noor_205"/>
+            <field name="name">Electricity – May 2026</field>
+            <field name="charge_type">electricity</field>
+            <field name="amount">450</field>
+            <field name="date">2026-05-31</field>
+            <field name="state">pending</field>
+        </record>
+
+        <record id="util_noor_310_gas_may" model="real.estate.utility.line">
+            <field name="lease_id" ref="lease_noor_310"/>
+            <field name="name">Gas – May 2026</field>
+            <field name="charge_type">gas</field>
+            <field name="amount">140</field>
+            <field name="date">2026-05-31</field>
+            <field name="state">pending</field>
+        </record>
+
+        <record id="util_palm_a01_elec_may" model="real.estate.utility.line">
+            <field name="lease_id" ref="lease_palm_a01"/>
+            <field name="name">Electricity – May 2026</field>
+            <field name="charge_type">electricity</field>
+            <field name="amount">290</field>
+            <field name="date">2026-05-31</field>
+            <field name="state">pending</field>
+        </record>
+
+        <record id="util_gv_villa1_gas_may" model="real.estate.utility.line">
+            <field name="lease_id" ref="lease_gv_villa1"/>
+            <field name="name">Gas – May 2026</field>
+            <field name="charge_type">gas</field>
+            <field name="amount">180</field>
+            <field name="date">2026-05-31</field>
+            <field name="state">pending</field>
+        </record>
+
+        <record id="util_gv_villa1_internet_may" model="real.estate.utility.line">
+            <field name="lease_id" ref="lease_gv_villa1"/>
+            <field name="name">Internet – May 2026</field>
+            <field name="charge_type">internet</field>
+            <field name="amount">250</field>
+            <field name="date">2026-05-31</field>
+            <field name="state">pending</field>
+        </record>
+
+        <record id="util_gv_villa2_elec_may" model="real.estate.utility.line">
+            <field name="lease_id" ref="lease_gv_villa2"/>
+            <field name="name">Electricity – May 2026</field>
+            <field name="charge_type">electricity</field>
+            <field name="amount">380</field>
+            <field name="date">2026-05-31</field>
+            <field name="state">pending</field>
+        </record>
+
+        <!-- Previously invoiced utilities (historical) -->
+        <record id="util_noor_101_elec_apr" model="real.estate.utility.line">
+            <field name="lease_id" ref="lease_noor_101"/>
+            <field name="name">Electricity – April 2026</field>
+            <field name="charge_type">electricity</field>
+            <field name="amount">298</field>
+            <field name="date">2026-04-30</field>
+            <field name="state">invoiced</field>
+        </record>
+
+        <record id="util_noor_101_water_apr" model="real.estate.utility.line">
+            <field name="lease_id" ref="lease_noor_101"/>
+            <field name="name">Water – April 2026</field>
+            <field name="charge_type">water</field>
+            <field name="amount">78</field>
+            <field name="date">2026-04-30</field>
+            <field name="state">invoiced</field>
+        </record>
+
+        <record id="util_noor_205_elec_apr" model="real.estate.utility.line">
+            <field name="lease_id" ref="lease_noor_205"/>
+            <field name="name">Electricity – April 2026</field>
+            <field name="charge_type">electricity</field>
+            <field name="amount">412</field>
+            <field name="date">2026-04-30</field>
+            <field name="state">invoiced</field>
+        </record>
+
+        <!-- ========================================================
+             MAINTENANCE REQUESTS
+        ======================================================== -->
+
+        <!-- NEW: Urgent pipe leak in Al Noor 101 -->
+        <record id="maint_noor_101_pipe" model="real.estate.maintenance">
+            <field name="name">Leaking pipe under kitchen sink</field>
+            <field name="sequence">MNT/00001</field>
+            <field name="unit_id" ref="unit_noor_101"/>
+            <field name="lease_id" ref="lease_noor_101"/>
+            <field name="description">Water leaking from the pipe under the kitchen sink. Pooling in cabinet. Needs urgent attention to avoid water damage.</field>
+            <field name="date_reported">2026-05-18</field>
+            <field name="priority">urgent</field>
+            <field name="state">new</field>
+            <field name="vendor_id" ref="partner_vendor_plumbing"/>
+            <field name="cost">350</field>
+        </record>
+
+        <!-- IN PROGRESS: AC failure in Al Noor 205 -->
+        <record id="maint_noor_205_ac" model="real.estate.maintenance">
+            <field name="name">Air conditioning not cooling – master bedroom</field>
+            <field name="sequence">MNT/00002</field>
+            <field name="unit_id" ref="unit_noor_205"/>
+            <field name="lease_id" ref="lease_noor_205"/>
+            <field name="description">Central AC unit in master bedroom stopped cooling. Technician from Dubai Electric Services is scheduled for inspection. Possible compressor fault.</field>
+            <field name="date_reported">2026-05-15</field>
+            <field name="priority">very_urgent</field>
+            <field name="state">in_progress</field>
+            <field name="vendor_id" ref="partner_vendor_electric"/>
+            <field name="cost">1200</field>
+        </record>
+
+        <!-- DONE: Door lock in Palm A01 -->
+        <record id="maint_palm_a01_lock" model="real.estate.maintenance">
+            <field name="name">Smart lock malfunction – main entrance</field>
+            <field name="sequence">MNT/00003</field>
+            <field name="unit_id" ref="unit_palm_a01"/>
+            <field name="lease_id" ref="lease_palm_a01"/>
+            <field name="description">Smart lock on main entrance stopped responding. Replaced with new digital keypad lock. Tenant provided new access codes.</field>
+            <field name="date_reported">2026-05-05</field>
+            <field name="date_resolved">2026-05-07</field>
+            <field name="priority">urgent</field>
+            <field name="state">done</field>
+            <field name="vendor_id" ref="partner_vendor_maintenance"/>
+            <field name="cost">580</field>
+        </record>
+
+        <!-- IN PROGRESS: Refurbishment of vacant unit 520 -->
+        <record id="maint_noor_520_refurb" model="real.estate.maintenance">
+            <field name="name">Full unit refurbishment before re-letting</field>
+            <field name="sequence">MNT/00004</field>
+            <field name="unit_id" ref="unit_noor_520"/>
+            <field name="description">Full repaint, bathroom tiles replacement, kitchen fixtures update. Unit to be re-listed after completion in July 2026.</field>
+            <field name="date_reported">2026-05-10</field>
+            <field name="priority">normal</field>
+            <field name="state">in_progress</field>
+            <field name="vendor_id" ref="partner_vendor_maintenance"/>
+            <field name="cost">8500</field>
+        </record>
+
+        <!-- NEW: Roof leak in Green Valley Villa 1 -->
+        <record id="maint_gv_villa1_roof" model="real.estate.maintenance">
+            <field name="name">Roof leak – master bedroom ceiling</field>
+            <field name="sequence">MNT/00005</field>
+            <field name="unit_id" ref="unit_gv_villa1"/>
+            <field name="lease_id" ref="lease_gv_villa1"/>
+            <field name="description">Water stains on ceiling of master bedroom after recent rain. Roof inspection and waterproofing treatment required before next rain season.</field>
+            <field name="date_reported">2026-05-12</field>
+            <field name="priority">urgent</field>
+            <field name="state">new</field>
+            <field name="vendor_id" ref="partner_vendor_maintenance"/>
+            <field name="cost">2800</field>
+        </record>
+
+        <!-- DONE: Window in Green Valley Villa 2 -->
+        <record id="maint_gv_villa2_window" model="real.estate.maintenance">
+            <field name="name">Cracked double-glazed window – living room</field>
+            <field name="sequence">MNT/00006</field>
+            <field name="unit_id" ref="unit_gv_villa2"/>
+            <field name="lease_id" ref="lease_gv_villa2"/>
+            <field name="description">Double-glazed window cracked due to heat stress. Window panel replaced. Sealed and tested satisfactorily.</field>
+            <field name="date_reported">2026-05-01</field>
+            <field name="date_resolved">2026-05-03</field>
+            <field name="priority">normal</field>
+            <field name="state">done</field>
+            <field name="vendor_id" ref="partner_vendor_maintenance"/>
+            <field name="cost">950</field>
+        </record>
+
+        <!-- NEW: Pool pump in Palm B02 -->
+        <record id="maint_palm_b02_pool" model="real.estate.maintenance">
+            <field name="name">Balcony drain blocked</field>
+            <field name="sequence">MNT/00007</field>
+            <field name="unit_id" ref="unit_palm_b02"/>
+            <field name="lease_id" ref="lease_palm_b02"/>
+            <field name="description">Balcony drain is blocked causing water to pool on the terrace. Plumber required to clear blockage and inspect drain piping.</field>
+            <field name="date_reported">2026-05-17</field>
+            <field name="priority">normal</field>
+            <field name="state">new</field>
+            <field name="vendor_id" ref="partner_vendor_plumbing"/>
+            <field name="cost">200</field>
+        </record>
+
+    </data>
+</odoo>

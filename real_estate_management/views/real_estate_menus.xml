@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem
+        id="menu_real_estate_root"
+        name="Real Estate"
+        sequence="50"
+        web_icon="real_estate_management,static/description/icon.png"
+        groups="real_estate_management.group_real_estate_user"/>
+
+    <menuitem
+        id="menu_real_estate_buildings"
+        name="Buildings"
+        parent="menu_real_estate_root"
+        action="action_real_estate_building"
+        sequence="10"
+        groups="real_estate_management.group_real_estate_user"/>
+
+    <menuitem
+        id="menu_real_estate_units"
+        name="Units"
+        parent="menu_real_estate_root"
+        action="action_real_estate_unit"
+        sequence="20"
+        groups="real_estate_management.group_real_estate_user"/>
+
+    <menuitem
+        id="menu_real_estate_leases"
+        name="Leases"
+        parent="menu_real_estate_root"
+        action="action_real_estate_lease"
+        sequence="30"
+        groups="real_estate_management.group_real_estate_user"/>
+
+    <menuitem
+        id="menu_real_estate_maintenance"
+        name="Maintenance"
+        parent="menu_real_estate_root"
+        action="action_real_estate_maintenance"
+        sequence="40"
+        groups="real_estate_management.group_real_estate_user"/>
+
+</odoo>

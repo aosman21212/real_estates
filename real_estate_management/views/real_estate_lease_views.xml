@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Lease List View -->
+    <record id="view_real_estate_lease_list" model="ir.ui.view">
+        <field name="name">real.estate.lease.list</field>
+        <field name="model">real.estate.lease</field>
+        <field name="arch" type="xml">
+            <list string="Leases">
+                <field name="name"/>
+                <field name="unit_id"/>
+                <field name="building_id"/>
+                <field name="tenant_id"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+                <field name="rent_amount"/>
+                <field name="currency_id" column_invisible="1"/>
+                <field name="state" widget="badge"
+                    decoration-success="state == 'active'"
+                    decoration-warning="state == 'expired'"
+                    decoration-danger="state == 'cancelled'"
+                    decoration-info="state == 'draft'"/>
+                <field name="next_invoice_date"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Lease Form View -->
+    <record id="view_real_estate_lease_form" model="ir.ui.view">
+        <field name="name">real.estate.lease.form</field>
+        <field name="model">real.estate.lease</field>
+        <field name="arch" type="xml">
+            <form string="Lease">
+                <header>
+                    <button name="action_activate" string="Activate" type="object"
+                        invisible="state != 'draft'"
+                        class="btn-primary"/>
+                    <button name="action_generate_invoice" string="Generate Invoice" type="object"
+                        invisible="state != 'active'"
+                        class="btn-secondary"/>
+                    <button name="action_expire" string="Expire" type="object"
+                        invisible="state != 'active'"/>
+                    <button name="action_cancel" string="Cancel" type="object"
+                        invisible="state in ('cancelled', 'expired')"/>
+                    <field name="state" widget="statusbar"
+                        statusbar_visible="draft,active,expired"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_invoices" type="object"
+                            class="oe_stat_button" icon="fa-file-text-o">
+                            <field name="invoice_count" widget="statinfo" string="Invoices"/>
+                        </button>
+                        <button name="action_view_maintenance" type="object"
+                            class="oe_stat_button" icon="fa-wrench">
+                            <field name="maintenance_count" widget="statinfo" string="Maintenance"/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Lease Details">
+                            <field name="unit_id"/>
+                            <field name="building_id"/>
+                            <field name="tenant_id"/>
+                        </group>
+                        <group string="Dates &amp; Financials">
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="rent_amount"/>
+                            <field name="deposit_amount"/>
+                            <field name="next_invoice_date"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Utility Charges" name="utility">
+                            <field name="utility_line_ids">
+                                <list editable="bottom">
+                                    <field name="name"/>
+                                    <field name="charge_type"/>
+                                    <field name="amount"/>
+                                    <field name="currency_id" column_invisible="1"/>
+                                    <field name="date"/>
+                                    <field name="state"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Notes" name="notes">
+                            <field name="notes" placeholder="Internal notes..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <!-- Lease Search View -->
+    <record id="view_real_estate_lease_search" model="ir.ui.view">
+        <field name="name">real.estate.lease.search</field>
+        <field name="model">real.estate.lease</field>
+        <field name="arch" type="xml">
+            <search string="Search Leases">
+                <field name="name"/>
+                <field name="tenant_id"/>
+                <field name="unit_id"/>
+                <field name="building_id"/>
+                <filter string="Draft" name="draft" domain="[('state', '=', 'draft')]"/>
+                <filter string="Active" name="active" domain="[('state', '=', 'active')]"/>
+                <filter string="Expired" name="expired" domain="[('state', '=', 'expired')]"/>
+                <filter string="Cancelled" name="cancelled" domain="[('state', '=', 'cancelled')]"/>
+                <group>
+                    <filter string="Tenant" name="group_tenant" context="{'group_by': 'tenant_id'}"/>
+                    <filter string="Building" name="group_building" context="{'group_by': 'building_id'}"/>
+                    <filter string="State" name="group_state" context="{'group_by': 'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Lease Action -->
+    <record id="action_real_estate_lease" model="ir.actions.act_window">
+        <field name="name">Leases</field>
+        <field name="res_model">real.estate.lease</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_real_estate_lease_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first lease contract!
+            </p>
+        </field>
+    </record>
+
+</odoo>

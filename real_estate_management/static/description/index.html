@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: #212529; background: #fff; }
+
+        /* ── Hero ── */
+        .hero {
+            background: linear-gradient(135deg, #0d1b2a 0%, #1b4965 60%, #5fa8d3 100%);
+            padding: 60px 40px;
+            text-align: center;
+            color: #fff;
+        }
+        .hero img.logo { width: 90px; height: 90px; border-radius: 18px; margin-bottom: 20px; box-shadow: 0 8px 32px rgba(0,0,0,.4); }
+        .hero h1 { font-size: 36px; font-weight: 700; margin-bottom: 12px; }
+        .hero p  { font-size: 17px; opacity: .85; max-width: 700px; margin: 0 auto 28px; line-height: 1.6; }
+        .badge-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+        .badge { background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.3);
+                 border-radius: 20px; padding: 6px 16px; font-size: 13px; }
+
+        /* ── Sections ── */
+        section { padding: 52px 40px; }
+        section:nth-child(even) { background: #f8f9fa; }
+        h2 { font-size: 26px; font-weight: 700; margin-bottom: 8px; color: #0d1b2a; }
+        h2 span { color: #017E84; }
+        .section-sub { color: #6c757d; margin-bottom: 36px; font-size: 15px; }
+
+        /* ── Feature grid ── */
+        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+        .feature-card {
+            background: #fff; border: 1px solid #e9ecef; border-radius: 12px;
+            padding: 28px 24px; transition: box-shadow .2s;
+        }
+        .feature-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,.10); }
+        .feature-icon { font-size: 32px; margin-bottom: 14px; }
+        .feature-card h3 { font-size: 17px; font-weight: 600; margin-bottom: 8px; color: #0d1b2a; }
+        .feature-card p  { font-size: 14px; color: #6c757d; line-height: 1.6; }
+
+        /* ── Screenshots ── */
+        .screenshots { display: flex; flex-direction: column; gap: 48px; }
+        .screenshot-item { display: flex; gap: 36px; align-items: center; }
+        .screenshot-item:nth-child(even) { flex-direction: row-reverse; }
+        .screenshot-item img { width: 62%; border-radius: 10px; border: 1px solid #dee2e6;
+                                box-shadow: 0 4px 20px rgba(0,0,0,.12); }
+        .screenshot-text { flex: 1; }
+        .screenshot-text .tag { display: inline-block; background: #e0f7f8; color: #017E84;
+                                 border-radius: 20px; padding: 4px 14px; font-size: 12px;
+                                 font-weight: 600; margin-bottom: 14px; }
+        .screenshot-text h3 { font-size: 22px; font-weight: 700; margin-bottom: 12px; color: #0d1b2a; }
+        .screenshot-text p  { font-size: 14px; color: #6c757d; line-height: 1.7; margin-bottom: 14px; }
+        .screenshot-text ul { padding-left: 18px; }
+        .screenshot-text li { font-size: 14px; color: #495057; line-height: 1.8; }
+
+        /* ── Workflow ── */
+        .workflow { display: flex; gap: 0; flex-wrap: wrap; }
+        .step { flex: 1; min-width: 160px; text-align: center; padding: 24px 16px; position: relative; }
+        .step:not(:last-child)::after {
+            content: "→"; position: absolute; right: -10px; top: 50%; transform: translateY(-50%);
+            font-size: 22px; color: #017E84;
+        }
+        .step-num { width: 48px; height: 48px; border-radius: 50%; background: #017E84;
+                    color: #fff; font-size: 20px; font-weight: 700; line-height: 48px;
+                    margin: 0 auto 12px; }
+        .step h4 { font-size: 14px; font-weight: 600; color: #0d1b2a; margin-bottom: 6px; }
+        .step p  { font-size: 12px; color: #6c757d; }
+
+        /* ── Stats bar ── */
+        .stats { display: flex; gap: 0; flex-wrap: wrap; background: #0d1b2a; border-radius: 12px; overflow: hidden; }
+        .stat { flex: 1; min-width: 160px; padding: 32px 20px; text-align: center; border-right: 1px solid rgba(255,255,255,.08); }
+        .stat:last-child { border-right: none; }
+        .stat .num { font-size: 36px; font-weight: 800; color: #5fa8d3; }
+        .stat .lbl { font-size: 13px; color: rgba(255,255,255,.65); margin-top: 6px; }
+
+        /* ── Compatibility / Tech table ── */
+        .compat { display: flex; gap: 16px; flex-wrap: wrap; }
+        .compat-item { background: #fff; border: 1px solid #e9ecef; border-radius: 8px;
+                        padding: 14px 20px; font-size: 14px; color: #495057; }
+        .compat-item strong { color: #0d1b2a; display: block; font-size: 15px; }
+
+        /* ── Tech specs table ── */
+        .spec-table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 14px; }
+        .spec-table th { background: #0d1b2a; color: #fff; padding: 12px 16px; text-align: left; }
+        .spec-table td { padding: 11px 16px; border-bottom: 1px solid #e9ecef; color: #495057; }
+        .spec-table tr:nth-child(even) td { background: #f8f9fa; }
+        .spec-table td:first-child { font-weight: 600; color: #0d1b2a; width: 220px; }
+
+        /* ── Footer ── */
+        footer { background: #0d1b2a; color: rgba(255,255,255,.6); text-align: center;
+                 padding: 30px 40px; font-size: 13px; }
+        footer a { color: #5fa8d3; text-decoration: none; }
+    </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════
+     HERO
+══════════════════════════════════════════════ -->
+<div class="hero">
+    <img class="logo" src="icon.png" alt="Real Estate Management"/>
+    <h1>Real Estate Management</h1>
+    <p>
+        Complete property management — buildings, leases, recurring rent,
+        maintenance &amp; utilities in one place.
+    </p>
+    <div class="badge-row">
+        <span class="badge">Odoo 19</span>
+        <span class="badge">🏢 Buildings &amp; Units</span>
+        <span class="badge">💰 Recurring Rent</span>
+        <span class="badge">🔧 Maintenance</span>
+        <span class="badge">⚡ Utilities</span>
+    </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     STATS
+══════════════════════════════════════════════ -->
+<section style="padding: 40px;">
+    <div class="stats">
+        <div class="stat"><div class="num">5</div><div class="lbl">Data Models</div></div>
+        <div class="stat"><div class="num">3</div><div class="lbl">Document Workflows</div></div>
+        <div class="stat"><div class="num">1</div><div class="lbl">Daily Cron Job</div></div>
+        <div class="stat"><div class="num">3</div><div class="lbl">Auto Sequences</div></div>
+        <div class="stat"><div class="num">19.0</div><div class="lbl">Odoo Version</div></div>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     FEATURES
+══════════════════════════════════════════════ -->
+<section>
+    <h2>Everything You Need to <span>Manage Properties</span></h2>
+    <p class="section-sub">From building registry to monthly invoices — run your entire real estate portfolio in one place.</p>
+    <div class="features">
+        <div class="feature-card">
+            <div class="feature-icon">🏢</div>
+            <h3>Building Management</h3>
+            <p>Organize properties with full address, owner, and occupancy stats at a glance. Track total, occupied, and available units per building in real time.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🏠</div>
+            <h3>Unit Portfolio</h3>
+            <p>Track every apartment or villa: floor, area, bedrooms, rent, status and current tenant. Status pipeline: Available, Occupied, Maintenance.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">📋</div>
+            <h3>Lease Contracts</h3>
+            <p>Full lease lifecycle from draft to expiry with deposit tracking and state history. Link units to tenants with start/end dates and monthly rent amounts.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">💰</div>
+            <h3>Recurring Rent Invoices</h3>
+            <p>Auto-generate monthly rent invoices with one click or via the daily scheduled cron. Each invoice is linked directly to the lease contract.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3>Utility Billing</h3>
+            <p>Add electricity, water, gas and internet charges per lease period. Utility lines are billed together with the next rent invoice — no manual work needed.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🔧</div>
+            <h3>Maintenance Tracking</h3>
+            <p>Log maintenance requests against buildings and units, assign vendors, track priority and status via a Kanban board, and create vendor bills directly.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     WORKFLOW
+══════════════════════════════════════════════ -->
+<section>
+    <h2>Complete Property <span>Lifecycle</span></h2>
+    <p class="section-sub">Every step from onboarding a property to collecting rent is covered.</p>
+    <div class="workflow">
+        <div class="step">
+            <div class="step-num">1</div>
+            <h4>Add Building</h4>
+            <p>Register property with address, owner, and all units</p>
+        </div>
+        <div class="step">
+            <div class="step-num">2</div>
+            <h4>Add Units</h4>
+            <p>Define each unit — floor, area, bedrooms, asking rent</p>
+        </div>
+        <div class="step">
+            <div class="step-num">3</div>
+            <h4>Create Lease</h4>
+            <p>Assign tenant, set start/end dates, record deposit</p>
+        </div>
+        <div class="step">
+            <div class="step-num">4</div>
+            <h4>Monthly Invoice</h4>
+            <p>Generate rent + utility invoice with one click or cron</p>
+        </div>
+        <div class="step">
+            <div class="step-num">5</div>
+            <h4>Track Maintenance</h4>
+            <p>Log requests, assign vendors, create bills, close tickets</p>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SCREENSHOTS
+══════════════════════════════════════════════ -->
+<section>
+    <h2>See It In <span>Action</span></h2>
+    <p class="section-sub">A visual tour of the key screens.</p>
+    <div class="screenshots">
+
+        <div class="screenshot-item">
+            <img src="screenshot_01_buildings.png" alt="Buildings List"/>
+            <div class="screenshot-text">
+                <span class="tag">PORTFOLIO</span>
+                <h3>Your Entire Portfolio at a Glance</h3>
+                <p>The Buildings list view gives you an instant overview of every property — city, owner, total units, and live occupancy figures in a clean table.</p>
+                <ul>
+                    <li>Occupancy KPI cards: Total, Occupied, Available, Maintenance</li>
+                    <li>Quick "New" button and search bar at the top</li>
+                    <li>One-click drill-down into any building record</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="screenshot-item">
+            <img src="screenshot_02_building_form.png" alt="Building Form"/>
+            <div class="screenshot-text">
+                <span class="tag">BUILDINGS</span>
+                <h3>Full Building Detail with Live Maintenance</h3>
+                <p>The building form shows address, owner details, and all units in a tabbed view. A smart button shows pending maintenance requests at a glance.</p>
+                <ul>
+                    <li>Smart button: Maintenance request count with one-click navigation</li>
+                    <li>Units tab: inline list with floor, area, rent, status badge, and tenant</li>
+                    <li>Status badges: green Occupied, blue Available, orange Maintenance</li>
+                    <li>Separate tabs for Maintenance log and Notes</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="screenshot-item">
+            <img src="screenshot_03_lease_form.png" alt="Lease Form"/>
+            <div class="screenshot-text">
+                <span class="tag">LEASES</span>
+                <h3>Lease Contracts with Utility Charges</h3>
+                <p>The lease form is the operational hub: status bar, action buttons, invoice smart button, and utility charge lines all in one record.</p>
+                <ul>
+                    <li>Status pipeline: Draft → Active → Expired</li>
+                    <li>"Generate Invoice" button creates the next rent invoice instantly</li>
+                    <li>Utility Charges tab: electricity, water, gas lines with due dates</li>
+                    <li>Smart buttons for related Invoices and Maintenance requests</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="screenshot-item">
+            <img src="screenshot_04_maintenance_kanban.png" alt="Maintenance Kanban"/>
+            <div class="screenshot-text">
+                <span class="tag">MAINTENANCE</span>
+                <h3>Maintenance Kanban Board</h3>
+                <p>Visualise your entire maintenance workload across three columns: New, In Progress, and Done. Priority badges make critical issues impossible to miss.</p>
+                <ul>
+                    <li>Columns: New (blue), In Progress (orange), Done (green)</li>
+                    <li>Priority badges: Very Urgent (red), Urgent (orange), Normal (blue)</li>
+                    <li>Each card shows the unit, building, and reported date</li>
+                    <li>Completed requests marked with a green checkmark</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="screenshot-item">
+            <img src="screenshot_05_maintenance_form.png" alt="Maintenance Form"/>
+            <div class="screenshot-text">
+                <span class="tag">MAINTENANCE</span>
+                <h3>Smart Cascade: Building → Unit → Lease</h3>
+                <p>The maintenance form automatically links the building to the unit, and the unit to the active lease — giving technicians and managers full context in one screen.</p>
+                <ul>
+                    <li>Location cascade: Building → Unit → Lease → Tenant auto-populated</li>
+                    <li>Priority, vendor, cost, and reported date in the Details column</li>
+                    <li>"Create Bill" stat button for direct vendor bill creation</li>
+                    <li>Rich description area for issue details and technician notes</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="screenshot-item">
+            <img src="screenshot_06_units_kanban.png" alt="Units Kanban"/>
+            <div class="screenshot-text">
+                <span class="tag">UNITS</span>
+                <h3>Unit Portfolio by Status</h3>
+                <p>The Units kanban gives a property manager an at-a-glance view of all units grouped by their current status — see what is available, occupied, or under maintenance instantly.</p>
+                <ul>
+                    <li>Available column (green): floor, bedrooms, and monthly rent</li>
+                    <li>Occupied column (blue): current tenant name and monthly rent</li>
+                    <li>Maintenance column (orange): unit under work with reason note</li>
+                    <li>Card count per column shown in the column header</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     TECHNICAL SPECS
+══════════════════════════════════════════════ -->
+<section>
+    <h2>Technical <span>Details</span></h2>
+    <p class="section-sub">Built with Odoo 19 best practices — clean models, proper sequences, and a daily cron.</p>
+    <div class="features">
+        <div class="feature-card">
+            <div class="feature-icon">🔐</div>
+            <h3>Role-Based Security</h3>
+            <p>Access rules scoped to the standard <strong>base.group_user</strong> group. All models have fine-grained read/write/create/unlink permissions per group.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🔗</div>
+            <h3>Dependencies</h3>
+            <p>Integrates only with core Odoo modules: <strong>base</strong>, <strong>account</strong> (invoicing), and <strong>mail</strong> (chatter &amp; activity tracking).</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">📬</div>
+            <h3>Full Chatter Support</h3>
+            <p>Buildings, Units, Leases, and Maintenance requests all inherit <strong>mail.thread</strong> and <strong>mail.activity.mixin</strong> for full messaging and activity support.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">⏰</div>
+            <h3>Daily Cron Automation</h3>
+            <p>A scheduled daily action automatically generates rent invoices for all active leases that are due — zero manual intervention required for recurring billing.</p>
+        </div>
+    </div>
+
+    <div style="margin-top: 36px;">
+        <table class="spec-table">
+            <thead>
+                <tr>
+                    <th>Specification</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Odoo Version</td><td>19.0</td></tr>
+                <tr><td>License</td><td>LGPL-3</td></tr>
+                <tr><td>Dependencies</td><td>base, account, mail</td></tr>
+                <tr><td>Models</td><td>5 (Building, Unit, Lease, Utility Charge, Maintenance)</td></tr>
+                <tr><td>Scheduled Actions</td><td>1 daily cron – auto-generate rent invoices</td></tr>
+                <tr><td>Auto Sequences</td><td>LEASE/XXXXX &nbsp;·&nbsp; MNT/XXXXX &nbsp;·&nbsp; UNIT/XXXXX</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div style="margin-top: 36px;">
+        <h3 style="margin-bottom: 16px; color: #0d1b2a;">Compatibility</h3>
+        <div class="compat">
+            <div class="compat-item"><strong>Odoo 19.0</strong>Community &amp; Enterprise</div>
+            <div class="compat-item"><strong>Odoo Online</strong>SaaS / Odoo.com</div>
+            <div class="compat-item"><strong>Odoo.sh</strong>PaaS Platform</div>
+            <div class="compat-item"><strong>On-Premise</strong>Self-hosted</div>
+            <div class="compat-item"><strong>License</strong>LGPL-3</div>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════ -->
+<footer>
+    <p>Real Estate Management for Odoo 19 &nbsp;•&nbsp; LGPL-3 License</p>
+    <p style="margin-top: 8px; opacity: .6;">For support, customisation, or installation assistance, please contact us through our website.</p>
+</footer>
+
+</body>
+</html>
